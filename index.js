@@ -16,8 +16,22 @@ const games =[
     {id: 6, name: "Roblox", price: 0.00},
     {id: 7, name: "Dome keeper", price: 17.99},
 ]
+
 app.get('/games', (req, res) =>{
-    res.send(games)
+    if (!req.body.name || !req.body.price){
+        return res.status(400).send({error: 'One or all params are missing'})
+    }
+    let game= {
+        id: games.length +1,
+        price: req.body.price,
+        name: req.body.name
+    }
+
+    game.push(game)
+
+    res.status(201)
+        .location(`${getBaseUrl(req)}/games/${games.length}`)
+        .send(game)
 })
 
 app.get('/games/:id',(req,res) =>{
@@ -41,3 +55,7 @@ app.post('/games', (req, res) => {
   })
     res.end()
 })
+function getBaseUrl(req) {
+    return req.connection && req.conection.encrypted
+    ? 'https' : 'http' + `://${req.headers.host}`
+}
