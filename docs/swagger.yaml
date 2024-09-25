@@ -1,0 +1,71 @@
+openapi: 3.0.2
+info:
+  title: Games-API
+  version: 3.0.2
+  description: A brand new API with no content.  Go nuts!
+paths:
+  /games:
+    get:
+      tags:
+        - games
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                List of games:
+                  value:
+                    - Satisfactory
+                    - Witcher 3
+          description: Returns a list of games
+      summary: GET Games
+  '/games/{id}':
+    get:
+      tags:
+        - details
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                Example:
+                  value: |-
+                    "Witcher 3"
+                    "Satisfactory"
+                Full details of a given game:
+                  value: |
+                    {id: 1, name: "Witcher 3", price: 29.99},
+          description: Game found
+        '404':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+              examples:
+                Game /w+ was not found:
+                  value: Game \\w+ was not found in game array.
+          description: Game was not found in games array.
+      operationId: id
+      summary: Get full details of a game
+      description: Returns full details of given id game
+components:
+  schemas:
+    error:
+      title: Root Type for error
+      description: ''
+      type: object
+      properties:
+        error:
+          type: string
+      example:
+        error: Error message.
