@@ -96,11 +96,6 @@ paths:
       operationId: id
       summary: Delete game
       description: Deletes game
-    parameters:
-      -
-        name: id
-        in: path
-        required: true
 components:
   schemas:
     error:
@@ -120,7 +115,7 @@ components:
           format: float
           type: number
       example:
-        name:  Satisfactory
+        name: Satisfactory
         price: 35.99
     delete-game:
       description: ''
