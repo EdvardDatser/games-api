@@ -14,7 +14,7 @@ const games = [
     {id: 4, name: "CS:GO",price:0},
     {id: 5, name: "Roblox",price:0},
     {id: 6, name: "Grand Theft Auto V",price:29.99},
-    {id: 7, name: "VAlorant",price:0},
+    {id: 7, name: "Valorant",price:0},
     {id: 8, name: "Forza Horizon 5",price:59.99}
 ]
 
